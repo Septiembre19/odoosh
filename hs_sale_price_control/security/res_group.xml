@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		
+		<record id="group_manage_product_price_sale" model="res.groups">
+			<field name="name">Modificar precios en venta</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+		</record>
+		
+	</data>
+</odoo>
