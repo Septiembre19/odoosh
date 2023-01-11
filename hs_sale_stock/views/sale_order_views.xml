@@ -13,11 +13,11 @@
 			</field>
 		</record>
 
-		<!--template id="assets_backend" name="HS Sale Stock Backend Assets" inherit_id="web.assets_backend">
+		<template id="assets_backend" name="HS Sale Stock Backend Assets" inherit_id="web.assets_backend">
 			<xpath expr="." position="inside">
 				<script type="text/javascript" src="/hs_sale_stock/static/src/js/qty_at_date_widget.js" />
 			</xpath>
-		</template-->
+		</template>
 		
 	</data>
 </odoo>
