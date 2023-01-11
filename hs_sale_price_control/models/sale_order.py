@@ -13,7 +13,7 @@ class SaleOrderLine(models.Model):
 
 	change_price = fields.Boolean("change Price", compute="compute_change_price")
 
-	
+	@api.depends('order_id')
 	def compute_change_price(self):
 		for line in self:
 			group_name = "hs_sale_price_control.group_manage_product_price_sale"
