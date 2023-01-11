@@ -34,6 +34,6 @@
 	],
 
 	'qweb': [
-		'static/src/xml/sale_stock.xml',
+		# 'static/src/xml/sale_stock.xml',
 	],
 }
