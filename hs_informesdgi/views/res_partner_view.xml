@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data noupdate="0">
+		<!-- model.name inherit form view -->
+		<record id="res_partner_bill_inherit1" model="ir.ui.view">
+			<field name="name">res.partner.bill.inherit1</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<!-- Add your xpath here -->
+				<xpath expr="//field[@name='vat']" position="replace">
+					<field name="vat" string="RUC"/>
+				</xpath>
+				<xpath expr="//field[@name='vat']" position="after">
+					<field name="dv"/>
+					<field name="tipo_persona" widget="radio"/>
+					<!-- <field name="name" attrs="{'invisible': [('condition1', '=', False)], 'required': [('condition2', '=', True)]}"/> -->
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

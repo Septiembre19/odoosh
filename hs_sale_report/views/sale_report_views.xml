@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="sale_line_report_view_tree" model="ir.ui.view">
+			<field name="name">sale.order.line.report.view.tree</field>
+			<field name="model">sale.order.line</field>
+			<field name="arch" type="xml">
+				<tree create="false" edit="false">
+					<field name="id" invisible="1"/>
+					<field name="date_order" string="Fecha"/>
+					<field name="order_name" string="Orden"/>
+					<field name="invoice" string="Factura"/>
+					<field name="no_fiscal"/>
+					<field name="product_id"/>
+					<field name="order_partner_id"/>
+					<field name="partner_name_ext"/>
+					<field name="salesman_id" string="Vendedor"/>
+					<field name="product_uom_qty" string="Cantidad"/>
+					<field name="qty_delivered" string="Entregado"/>
+					<field name="qty_invoiced" string="Facturado"/>
+					<field name="product_uom" string="UoM"/>
+					<field name="company_id"/>
+					<field name="price_subtotal" sum="Total" widget="monetary"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="sale_line_report_action" model="ir.actions.act_window">
+			<field name="name">Ventas por Producto</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">sale.order.line</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="sale_line_report_action_tree" model="ir.actions.act_window.view">
+			<field name="sequence" eval="1"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="sale_line_report_view_tree"/>
+			<field name="act_window_id" ref="sale_line_report_action"/>
+		</record>
+
+		<menuitem id="sale_line_report_menu_act" name="Ventas por Producto" parent="sale.menu_sale_report" action="sale_line_report_action" sequence="10"/>
+	</data>
+</odoo>

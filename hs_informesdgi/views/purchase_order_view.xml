@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data noupdate="0">
+		<!-- Add you code here -->
+		
+		<!-- model.name inherit form view -->
+		<record id="purchase_order_vendor_inherit1" model="ir.ui.view">
+			<field name="name">purchase.order.vendor.inherit1</field>
+			<field name="model">purchase.order</field>
+			<field name="inherit_id" ref="purchase.purchase_order_form"/>
+			<field name="arch" type="xml">
+				<!-- Add your xpath here -->
+				<xpath expr="//field[@name='partner_ref']" position="after">
+					<field name="concepto" invisible="1" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}"/>
+				</xpath>
+				<xpath expr="//field[@name='company_id']" position="after">
+					<field name="tipo_compra" invisible="1" attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))]}"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

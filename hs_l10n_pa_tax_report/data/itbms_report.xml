@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		
+		<record id="report_itbms_sale" model="itbms.report">
+			<field name="name">Informe ITBMS Facturacion</field>
+			<field name="report_type">sale</field>
+		</record>
+			
+		<record id="report_itbms_purchase" model="itbms.report">
+			<field name="name">Informe ITBMS Compras</field>
+			<field name="report_type">purchase</field>
+			<field name="move_type_domain">[('move_type', 'in', ['in_invoice', 'in_refund'])]</field>
+		</record>
+
+		<record id="report_itbms_expense" model="itbms.report">
+			<field name="name">Informe ITBMS Gastos</field>
+			<field name="report_type">expense</field>
+		</record>
+
+	</data>
+</odoo>

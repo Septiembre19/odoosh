@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="action_account_anexo94_report" model="ir.actions.client">
+			<field name="name">Anexo 94</field>
+			<field name="tag">account_report</field>
+			<field name="context" eval="{'model': 'account.anexo94.report'}" />
+		</record>
+        
+        <menuitem id="menu_action_account_anexo94_report" 
+			name="Reporte Anexo 94"
+			action="action_account_anexo94_report" 
+			parent="account_reports.account_reports_audit_reports_menu" 
+			groups="account.group_account_user"/>
+        
+    </data>
+</odoo>

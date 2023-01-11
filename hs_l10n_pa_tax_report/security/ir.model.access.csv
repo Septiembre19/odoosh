@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_panama_tax_report_wizard,panama.tax.report.wizard,model_panama_tax_report_wizard,,1,1,1,1
+access_account_itbms_report,account.itbms.report,model_itbms_report,,1,1,1,1
+access_account_itbms_report_line,account.itbms.report.line,model_itbms_report_line,,1,1,1,1

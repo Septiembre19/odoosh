@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Creamos un grupo para controlar el boton delivery en ventas -->
+		<record id="sales_delivery_button" model="res.groups">
+			<field name="name">Mostrar Boton Delivery en Ventas</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		</record>
+		<!-- Creamos un grupo para controlar el boton actualizar cantidades en productos -->
+		<record id="product_update_qty_button" model="res.groups">
+			<field name="name">Mostrar Boton Actualizar Cantidades en Productos</field>
+			<field name="category_id" ref="base.module_category_hidden"/>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+		</record>
+		<!-- Creamos un grupo para controlar el boton actualizar cantidades en productos -->
+		<record id="sale_quotation_only_users" model="res.groups">
+			<field name="name">Ventas: Solo Cotización</field>
+			<field name="category_id" ref="base.module_category_sales_sales"/>
+			<field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman_all_leads'))]"/>
+			<field name="users" eval="[(4, ref('base.user_admin'))]"/>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+
+		<record id="account_move_vendor_inherit2" model="ir.ui.view">
+			<!-- <field name="name">account.move.vendor.inherit2</field> -->
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<!-- Add your xpath here -->
+				<xpath expr="//field[@name='ref']" position="after">
+					<!-- <field name="hs_tipo" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/> -->
+					<field name="hs_tipo" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<field name="hs_ruc" invisible="1"/>
+					<field name="hs_dv" invisible="1"/>
+				</xpath>
+				<!-- CAMPOS PARA INFORME 43 -->
+				<xpath expr="//field[@name='journal_id']/parent::div" position="after">
+					<label for="concepto" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<!-- <label for="concepto"/> -->
+					<div>
+						<!-- <field name="concepto" class="oe_inline" /> -->
+						<field name="concepto" class="oe_inline" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					</div>
+				</xpath>
+				<xpath expr="//field[@name='concepto']/parent::div" position="after">
+					<label for="compra" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<div>
+						<field name="compra" class="oe_inline" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+						<!-- <field name="compra" class="oe_inline" /> -->
+					</div>
+				</xpath>
+				<!-- CAMPOS PARA ANEXO 72 Y 94 -->
+				<xpath expr="//field[@name='payment_reference']" position="after">
+					<field name="tipo_pago" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<field name="periodo" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<!-- <field name="tipo_pago" />
+					<field name="periodo"/> -->
+				</xpath>
+				
+				<xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_id']" position = "before" > 
+					<field name="move_type" invisible="1"/>					
+					<field name="concepto_72" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<field name="concepto_94" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
+					<!-- <field name="concepto_72"/> -->
+					<!-- <field name="concepto_94" /> -->
+                </xpath> 
+                <xpath expr="//field[@name='line_ids']/tree/field[@name ='account_id']" position = "before" > 
+					<field name="concepto_72" invisible="1"/>
+					<field name="concepto_94" invisible="1"/>
+                </xpath>
+			</field>
+		</record>
+
+		<record id="view_account_invoice_search" model="ir.ui.view">
+			<field name="name">view.account.invoice.search</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='due_date']" position="after">
+    				<separator name="Informe 43"/>
+    				<filter name="informe_43" string="Informe 43" domain="[('concepto','!=',False)]"/>
+					<filter name="anexo_72" string="Anexo 72" domain="[('tipo_pago','!=',False)]"/>
+ 				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</odoo>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="itbms_report_tree" model="ir.ui.view">
+			<field name="name">itbms.report.tree</field>
+			<field name="model">itbms.report</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="report_type"/>
+				</tree>
+			</field>
+		</record>
+
+
+		<record id="itbms_report_form" model="ir.ui.view">
+			<field name="name">itbms.report.form</field>
+			<field name="model">itbms.report</field>
+			<field name="arch" type="xml">
+				<form string="">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="report_type"/>
+								<!--field name="account_ids" widget="many2many_tags"/-->
+								<field name="move_type_domain"/>
+							</group>
+							<group>
+								<field name="journal_ids" widget="many2many_tags" attrs="{'required': [('report_type', '=', 'expense')], 'invisible': [('report_type', '!=', 'expense')]}"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Lines">
+								<field name="line_ids" widget="section_and_note_one2many" mode="tree">
+									<tree string="Sales Order Lines" editable="bottom">
+										<field name="account_id"/>
+										<field name="name"/>
+										<field name="position"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="l10n_pa_tax_report_template_action" model="ir.actions.act_window">
+			<field name="name">Plantilla de Reporte IBTMS</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">itbms.report</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		
+		<record id="l10n_pa_sale_tax_report_action" model="ir.actions.act_window">
+			<field name="name">Reporte IBTMS: Ventas</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">panama.tax.report.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="context" eval="{'default_itbms_report_id': ref('hs_l10n_pa_tax_report.report_itbms_sale')}" />
+			<field name="target">new</field>
+		</record>
+
+		<record id="l10n_pa_purchase_tax_report_action" model="ir.actions.act_window">
+			<field name="name">Reporte IBTMS: Compras</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">panama.tax.report.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="context" eval="{'default_itbms_report_id': ref('hs_l10n_pa_tax_report.report_itbms_purchase')}" />
+			<field name="target">new</field>
+		</record>
+
+		<record id="l10n_pa_cost_tax_report_action" model="ir.actions.act_window">
+			<field name="name">Reporte IBTMS: Gastos</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">panama.tax.report.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="context" eval="{'default_itbms_report_id': ref('hs_l10n_pa_tax_report.report_itbms_expense')}" />
+			<field name="target">new</field>
+		</record>
+
+
+		<menuitem id="l10_pa_tax_menu_categ" name="Reportes de Impuesto" parent="account.menu_finance_reports" sequence="4"/>
+			<menuitem id="l10n_pa_sale_tax_report_menu_act" name="Ventas" parent="l10_pa_tax_menu_categ" action="l10n_pa_sale_tax_report_action" sequence="1"/>
+			<menuitem id="l10n_pa_purchase_tax_report_menu_act" name="Compras" parent="l10_pa_tax_menu_categ" action="l10n_pa_purchase_tax_report_action" sequence="2"/>
+			<menuitem id="l10n_pa_cost_tax_report_menu_act" name="Gastos" parent="l10_pa_tax_menu_categ" action="l10n_pa_cost_tax_report_action" sequence="3"/>
+
+			<!-- This Menu Item Must have a parent -->
+			<menuitem id="l10n_pa_tax_report_template_menu_act" name="ITBMS Template" parent="account.account_management_menu" action="l10n_pa_tax_report_template_action" sequence="10"/>
+	</data>
+</odoo>

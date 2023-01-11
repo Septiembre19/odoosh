@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>"
+	<template id="report_report_invoice" inherit_id="account.report_invoice_document">
+		<xpath expr="//address[1]" position="after">
+			<div t-if="o.partner_name_ext" class="col-auto mw-100 mb-2">
+				<strong>Nombre</strong>
+				<p class="m-0" t-field="o.partner_name_ext"/>
+			</div>
+		</xpath>
+		<xpath expr="//div[@id='informations']" position="inside">
+            <div class="col-auto col-3 mw-100 mb-2" t-if="o.custom_payment_method" name="custom_payment_method">
+                <strong>Tipo de pago:</strong>
+                <p class="m-0" t-field="o.custom_payment_method"/>
+            </div>
+		</xpath>
+	</template>
+</odoo>

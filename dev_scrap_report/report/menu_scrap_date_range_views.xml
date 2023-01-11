@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <report id="menu_scrap_date_range_report"
+            model="scrap.date.range.report"
+            string="Scrap Report"
+            report_type="qweb-pdf"
+            name="dev_scrap_report.template_scrap_date_range"
+            file="dev_scrap_report.template_scrap_date_range"
+            groups="base.group_no_one"
+            >
+    </report>
+</odoo>

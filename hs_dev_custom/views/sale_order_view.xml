@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		
+		<record id="sale_order_view_inherit" model="ir.ui.view">
+			<field name="name">sale.order.view.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<!-- Agregamos el campo de nombre auxiliar usada cuando para los clientes contados-->
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="partner_name_ext" attrs="{'invisible': [('partner_id', '!=', %(hs_dev_custom.generic_customer)d)]}"/>
+				</xpath>
+				<!-- <xpath expr="//field[@name='payment_reference']" position="after">
+					<field name="custom_payment_method" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+				</xpath> -->
+
+				
+				<xpath expr="//field[@name='authorized_transaction_ids']" position="after">
+					<field name="hide_button_confirm" invisible="1"/>
+				</xpath>
+				<xpath expr="//button[@name='action_confirm'][1]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('state', 'not in', ['sent']), ('hide_button_confirm', '=', True)]}</attribute>
+				</xpath>
+				<xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+					<attribute name="attrs">{'invisible': ['|', ('state', 'not in', ['draft']), ('hide_button_confirm', '=', True)]}</attribute>
+				</xpath>
+				
+			</field>
+		</record>
+
+
+		<!-- Ocultamos el boton de delivery para que solo los vean los de inventario -->
+		<!-- Ocultamos el boton Confirm a usuarios Only Quotations-->
+		<record id="sale_button_delivery_form" model="ir.ui.view">
+			<field name="name">sale.button.delivery.form</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='action_view_delivery']" position="attributes">
+					<attribute name="groups">hs_dev_custom.sales_delivery_button</attribute>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

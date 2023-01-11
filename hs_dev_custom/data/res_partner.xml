@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- Creamos el cliente contado -->
+		<record id="generic_customer" model="res.partner" context="{'default_is_company': False}">
+			<field name="name">Ventas al Contado (VAC)</field>
+			<field name="is_company" eval="False"/>
+		</record>
+	</data>
+</odoo>

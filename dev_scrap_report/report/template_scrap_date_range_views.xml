@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <template id="main_scrap_date_range">
+        <t t-call="web.external_layout">
+            <div class="page" style="font-size:14px;">
+                <div style="margin-top: 5px;">
+                    &#160;
+                </div>
+                <h3>
+                    <center>Informe de Descarte</center>
+                </h3>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-11" style="font-size: 14px;">
+                        <b>Desde</b>&#160;:&#160;<span t-esc="timezone_conversion(o.start_date)"/><br/>
+                        <b>Hasta</b>&#160;:&#160;<span t-esc="timezone_conversion(o.end_date)"/>
+                    </div>
+                </div>
+                <span t-set="data" t-value="get_scrap_data(o)"/>
+                <table width="100%" style="font-size: 14px;table-layout: fixed;margin-top: 10px;" class="table table-condensed">
+                    <tr style="word-wrap: break-word;line-height: 12px;">
+                        <th style="width: 12%;border-bottom: 2px solid black;border-top: 1px solid white;">Referencia</th>
+                        <th style="width: 18%;border-bottom: 2px solid black;border-top: 1px solid white;">Producto</th>
+                        <th style="width: 8%;border-bottom: 2px solid black;border-top: 1px solid white;">Cant.</th>
+                        <th style="width: 17%;border-bottom: 2px solid black;border-top: 1px solid white;">Ubicación</th>
+                        <th style="width: 18%;border-bottom: 2px solid black;border-top: 1px solid white;">Ubicación Desc.</th>
+                        <th style="width: 17%;border-bottom: 2px solid black;border-top: 1px solid white;">Fecha</th>
+                        <th style="width: 10%;border-bottom: 2px solid black;border-top: 1px solid white;">Estado</th>
+                    </tr>
+                    <tr t-foreach="data" t-as="line" style="font-size: 12px;word-wrap: break-word;line-height: 10px;">
+                        <td>
+                            <span t-esc="line['number']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['product']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['qty']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['location']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['scrap_location']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['scrap_date']"/>
+                        </td>
+                        <td>
+                            <span t-esc="line['state']"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="template_scrap_date_range">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="dev_scrap_report.main_scrap_date_range"/>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="invoice_analysis_view">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t class="page">
+                    <div class="oe_structure"/>
+                    <center>
+                        <b>
+                            <h3>Informe de ventas por vendedor</h3>
+
+                        </b>
+                    </center>
+                    <t t-if="start_date and end_date">
+                        <center>
+                            <span t-esc="start_date"/>
+                            Al 
+                            <span t-esc="end_date"/>
+                        </center>
+                    </t>
+                    <t t-foreach="user_id" t-as="user">
+                        <center>
+                            <b>
+                                <span t-esc="user['name']"/>
+                            </b>
+                        </center>
+                        <br/>
+                        <t t-set="t_invoiced" t-value="0"/>
+                        <t t-set="t_paid" t-value="0"/>
+                        <t t-set="t_due" t-value="0"/>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>A nombre de</th>
+                                    <th># Orden</th>
+                                    <th>Fecha de Orden</th>
+                                    <th># Factura</th>
+                                    <th>Fecha Factura</th>
+                                    <th>Monto Facturado</th>
+                                    <!-- <th>Monto Pagado</th>
+                                    <th>Monto Adeudado</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="form" t-as="order">
+                                    <t t-if="order['user_id'] == user['id']">
+                                        <td>
+                                            <span t-esc="order['partner_id']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order['partner_name_ext']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order['so']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order['order_date']" t-options='{"widget": "date"}'/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order['invoice']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="order['date']"/>
+                                        </td>
+                                        <t t-if="order['type'] == 'out_invoice'">
+                                            <td>
+                                                $ <span t-esc="order['invoiced']"/>
+                                                <t t-set="t_invoiced" t-value="t_invoiced + order['invoiced']"></t>
+
+                                            </td>
+                                        </t>
+                                        <t t-else="order['type'] == 'out_refund">
+                                            <td>
+                                                $ -<span t-esc="order['invoiced']"/>
+                                                <t t-set="t_invoiced" t-value="t_invoiced - order['invoiced']"></t>
+
+                                            </td>
+                                        </t>
+                                       
+                                
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                    </td>
+                                    <td>
+                                        <span>Total facturado:</span>
+                                        $ <t t-esc="t_invoiced"/>
+                                    </td>
+                                    <!-- <td>
+                                        <span>Total pagado:</span>
+                                        <t t-esc="t_paid"/>
+                                    </td>
+                                    <td>
+                                        <span>Total adeudado:</span>
+                                        <t t-esc="t_due"/>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

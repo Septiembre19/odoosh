@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <!--form-->
+    <record id="form_scrap_date_range" model="ir.ui.view">
+        <field name="name">form.scrap.date.range</field>
+        <field name="model">scrap.date.range.report</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Date Range Form">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Print" name="print_scrap_report" type="object" class="oe_highlight" icon="fa-print"/>
+                    &#160;or&#160;
+                    <button string="Close Window" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!--action-->
+    <record id="action_scrap_date_range" model="ir.actions.act_window">
+        <field name="name">Scrap Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scrap.date.range.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="form_scrap_date_range"/>
+        <field name="target">new</field>
+    </record>
+    <!--Menus-->
+    <menuitem name="Scrap Report"
+              id="menu_print_scrap_report"
+              parent="stock.menu_stock_warehouse_mgmt"
+              sequence="100"
+              action="action_scrap_date_range"
+              groups="dev_scrap_report.can_print_scrap_report"/>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+	<record id="electronic_invoice_fields_company_inherit_form" model="ir.ui.view">
+	  <field name="name">electronic.invoice.fields.company.inherit.form</field>
+	  <field name="model">electronic.invoice</field>
+	  <field name="inherit_id" ref="hs_electronic_invoice.electronic_invoice_form"/>
+	  <field name="arch" type="xml">
+		<xpath expr="//field[@name='hsPassword']" position="after" >		
+			<field name="fe_principal_company_config" />	
+			<field name="fe_company_config" />	
+			<field name="is_sucursal" />	
+		</xpath>
+	  </field>
+	</record>
+
+  </data>
+</odoo>

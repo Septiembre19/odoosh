@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- model.name inherit calendar view -->
+		<record id="invoice_view_inherit" model="ir.ui.view">
+			<field name="name">invoice.view.inherit</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<!-- Agregamos el campo de nombre auxiliar usada cuando para los clientes contados-->
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="partner_name_ext" attrs="{'invisible': [('partner_id', '!=', %(hs_dev_custom.generic_customer)d)]}"/>
+				</xpath>
+				<xpath expr="//field[@name='payment_reference']" position="after">
+					<field name="custom_payment_method" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+				</xpath>
+
+				<!-- Agregamos el numero fiscal al formulario-->
+				<xpath expr="//div[hasclass('oe_title')]/h1[2]" position="after">
+					<div class="o_row mt0 col-8" style="padding-left: 0px;">
+						<field name="numero_fiscal" placeholder="Número Fiscal" attrs="{'invisible': [('move_type', 'not in', ['out_invoice', 'out_refund', 'out_receipt'] )] }"/>
+					</div>
+				</xpath>
+			</field>
+		</record>
+
+
+		<record id="account_move_tree_inherit" model="ir.ui.view">
+			<field name="name">account.move.tree.inherit</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_invoice_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<field name="numero_fiscal" invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

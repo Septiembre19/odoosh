@@ -1,0 +1,19 @@
+Licencia de propiedad de Hermec Consulting v1.0
+
+Este software y los archivos asociados (el "Software" de ahora en adelante) solo se pueden utilizar (ejecutar, modificar, ejecutar después de modificaciones) si tiene adquirido una licencia válida de Hermec Consulting.
+Los permisos anteriores se otorgan para una sola base de datos por licencia comprada. Además, con una licencia válida se permite utilizar el software en otras bases de datos siempre que el uso se limite a un entorno de pruebas o desarrollo.
+Puede desarrollar módulos basados en el Software o que utilicen el Software como una biblioteca (típicamente dependiendo de ella, importándola y usando su recursos), pero sin copiar ningún código fuente o material del Software. Puede distribuir esos módulos bajo la licencia de su elección, siempre que esta licencia sea compatible con los términos de la Licencia de propiedad de Hermec Consulting (por ejemplo: LGPL, MIT o licencias de propiedad parecido a este).
+Está prohibido publicar, distribuir, sublicenciar o vender copias del Software o copias modificadas del Software.
+El aviso de derechos de autor anterior y este aviso de permiso deben incluirse en todas las copias o partes sustanciales del Software.
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITO, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO VIOLACIÓN. EN NINGÚN CASO LOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE CUALQUIER RECLAMACIÓN, DAÑOS U OTROS RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRA FORMA, DERIVADA DESDE, FUERA DE O EN RELACIÓN CON EL SOFTWARE O EL USO U OTRO TRATAMIENTOS EN EL SOFTWARE.
+
+
+Hermec Consulting Proprietary License v1.0
+
+This software and associated files (the "Software") may only be used (executed, modified, executed after modifications) if you have
+purchased a valid license from Hermec Consulting.
+The above permissions are granted for a single database per purchased license. Furthermore, with a valid license it is permitted to use the software on other databases as long as the usage is limited to a testing or development environment.
+You may develop modules based on the Software or that use the Software as a library (typically by depending on it, importing it and using its resources), but without copying any source code or material from the Software. You may distribute those modules under the license of your choice, provided that this license is compatible with the terms of the Hermec Consulting Proprietary License (For example: LGPL, MIT, or proprietary licenses similar to this one).
+It is forbidden to publish, distribute, sublicense, or sell copies of the Software or modified copies of the Software.
+The above copyright notice and this permission notice must be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

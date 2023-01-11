@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <!--form-->
+    <record id="form_scrap_multi_report" model="ir.ui.view">
+        <field name="name">form.scrap.multi.report</field>
+        <field name="model">scrap.multi.report</field>
+        <field name="arch" type="xml">
+            <form string="Scrap Multi Form">
+                <p>Click on <b>Print</b> to print report of selected Scrap Order(s) or <br/>Use <b>Close Window</b> to close this window</p>
+                <footer>
+                    <button string="Print" name="print_scrap_report" type="object" class="oe_highlight" icon="fa-print"/>
+                    &#160;or&#160;
+                    <button string="Close Window" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!--action-->
+    <act_window
+            id="action_scrap_multi_report"
+            name="Print Scrap Report"
+            res_model="scrap.multi.report"
+            binding_model="stock.scrap"
+            view_mode="form"
+            target="new"
+            groups="dev_scrap_report.can_print_scrap_report"/>
+</odoo>
