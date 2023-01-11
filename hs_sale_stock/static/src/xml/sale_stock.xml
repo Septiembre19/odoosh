@@ -1,6 +1,7 @@
-<templates>
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
 
-	<t t-name="QtyDetailPopOver" t-inherit="sale_stock.QtyDetailPopOver">
+	<t t-name="QtyDetailPopOver" t-inherit="sale_stock.QtyDetailPopOver" t-inherit-mode="extension" owl="1">
 		<xpath expr="//table/tbody/t[1]/tr[2]" position="after">
 			<tr><td><strong>Other</strong><br /></td><td></td></tr>
 				<t t-foreach="data.alt_qty_available" t-as="line">
